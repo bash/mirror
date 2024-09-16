@@ -21,7 +21,7 @@ mirror_dir = os.environ['MIRRORED']
 
 
 for i, repo in enumerate(g.get_user().get_repos()):
-    if i % 20 == 0:
+    if i % 20 == 0 and i != 0:
         print(f'{colored('info:', attrs=['bold'])} sleeping for a bit', file=sys.stderr)
         time.sleep(5)
     clone_dir = path.join(mirror_dir, repo.full_name)
