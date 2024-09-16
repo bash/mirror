@@ -1,7 +1,4 @@
 #!/usr/bin/env python3
-# /// script
-# dependencies = ["PyGithub~=2.4", "termcolor~=2.4.0"]
-# ///
 
 from github import Github, Auth
 from subprocess import check_call

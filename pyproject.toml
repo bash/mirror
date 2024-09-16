@@ -1,0 +1,7 @@
+[project]
+name = "git-mirror"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = ["PyGithub~=2.4", "termcolor~=2.4.0"]
