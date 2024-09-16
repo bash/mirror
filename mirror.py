@@ -26,13 +26,12 @@ for repo in g.get_user().get_repos():
     os.makedirs(clone_dir, exist_ok=True)
     if path.exists(path.join(clone_dir, 'config')):
         print(f'{colored('info:', attrs=['bold'])} updating {colored(repo.full_name, 'cyan')}')
-        check_call(['git', '-C', clone_dir, 'fetch', '--tags'], env={'GIT_PASSWORD': token})
+        check_call(['git', '-C', clone_dir, 'fetch', '--tags'])
     else:
         print(f'{colored('info:', attrs=['bold'])} cloning {colored(repo.full_name, 'cyan')}')
         check_call(
             [
                 'git', 'clone', '--mirror',
                 '--config', f'credential.{origin(repo.clone_url)}.username={username}',
-                '--config', 'credential.helper=!f() { test "$1" = get && echo "password=$GIT_PASSWORD"; }; f',
-                '--', repo.clone_url, clone_dir],
-            env={'GIT_PASSWORD': token})
+                '--config', 'credential.helper=!f() { test "$1" = get && echo "password=$GITHUB_TOKEN"; }; f',
+                '--', repo.clone_url, clone_dir])
